@@ -50,7 +50,7 @@ collection = db["data_klaim"]
 1. Jalankan skrip:
 
 ```bash
-python email_data_extraction.py
+python3 rpa_bot_email.py
 ```
 
 2. Skrip akan terhubung ke akun email Anda, mencari email dengan subjek tertentu (misalnya, "Klaim Asuransi"), dan mengekstraksi data dari email yang cocok.
