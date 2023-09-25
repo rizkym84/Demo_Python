@@ -47,7 +47,7 @@ def extract_data_from_body(body):
 
 def save_to_mongodb(data):
     try:
-        client = pymongo.MongoClient("mongodb://doitAdmin:doitAdminAt2023@digital-optima.com:27017/?authMechanism=DEFAULT&tls=false")
+        client = pymongo.MongoClient("mongodb://localhost:27017/")
         db = client["klaim_asuransi"]
         collection = db["data_klaim"]
         collection.insert_one(data)
@@ -109,9 +109,9 @@ def extract_data_from_attachment(part):
 
 
 # Konfigurasi email
-email_user = "rpa_demo@digitaloptima.id"
-email_pass = ")emhY3pOwp{W"
-imap_server = "mail.digitaloptima.id"
+email_user = ""
+email_pass = ""
+imap_server = ""
 imap_port = 993  # Port IMAP SSL
 
 # Buat koneksi ke server email
