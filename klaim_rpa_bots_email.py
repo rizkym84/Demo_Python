@@ -7,10 +7,10 @@ from email.header import decode_header
 import email
 import imaplib
 
-# Konfigurasi logging
+# Konfigurasi logging -Ricky
 logging.basicConfig(filename='error.log', level=logging.ERROR)
 
-# Fungsi untuk mendekode judul email
+# Fungsi untuk mendekode judul email -Ricky
 
 
 def decode_subject(subject):
@@ -23,26 +23,26 @@ def decode_subject(subject):
             decoded_subject += part
     return decoded_subject
 
-# Fungsi untuk mendapatkan tanggal dari email
+# Fungsi untuk mendapatkan tanggal dari email -Ricky
 
 
 def extract_date_from_email(email_message):
     date = email_message["Date"]
     return date
 
-# Fungsi untuk mengekstrak data dari tubuh email
+# Fungsi untuk mengekstrak data dari tubuh email -Ricky
 
 
 def extract_data_from_body(body):
-    # Ekstrak data dari Body email
-    # Ekstrak nomor klaim sebagai contoh
+    # Ekstrak data dari Body email -Ricky
+    # Ekstrak nomor klaim sebagai contoh -Ricky
     claim_number = re.search(r"Nomor Klaim: (\d+)", body)
     if claim_number:
         return claim_number.group(1)
     else:
         return None
 
-# Fungsi untuk menyimpan data ke MongoDB
+# Fungsi untuk menyimpan data ke MongoDB -Ricky
 
 
 def save_to_mongodb(data):
@@ -54,11 +54,11 @@ def save_to_mongodb(data):
     except Exception as e:
         logging.error(f"Error saving data to MongoDB: {str(e)}")
 
-# Fungsi untuk mengekstrak data dari attachment
+# Fungsi untuk mengekstrak data dari attachment -Ricky
 
 
 def process_email(email_body):
-    # Define regular expressions to match the parameter values
+    # Define regular expressions to match the parameter values -Ricky
     claim_number_pattern = r"No Klaim: (\w+)"
     amount_pattern = r"amount: ([\d.]+)"
     date_pattern = r"transaction_date: (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})"
@@ -67,7 +67,7 @@ def process_email(email_body):
     transaction_type_pattern = r"transaction_type: (\w+)"
     location_pattern = r"location: (.+)"
 
-    # Extract parameter values using regular expressions
+    # Extract parameter values using regular expressions -Yundi
     claim_number = re.search(claim_number_pattern, email_body).group(1)
     amount = re.search(amount_pattern, email_body).group(1)
     transaction_date = re.search(date_pattern, email_body).group(1)
