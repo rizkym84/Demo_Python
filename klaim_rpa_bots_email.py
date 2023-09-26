@@ -11,8 +11,6 @@ import imaplib
 logging.basicConfig(filename='error.log', level=logging.ERROR)
 
 # Fungsi untuk mendekode judul email -Ricky
-
-
 def decode_subject(subject):
     decoded_parts = decode_header(subject)
     decoded_subject = ""
@@ -24,15 +22,11 @@ def decode_subject(subject):
     return decoded_subject
 
 # Fungsi untuk mendapatkan tanggal dari email -Ricky
-
-
 def extract_date_from_email(email_message):
     date = email_message["Date"]
     return date
 
 # Fungsi untuk mengekstrak data dari tubuh email -Ricky
-
-
 def extract_data_from_body(body):
     # Ekstrak data dari Body email -Ricky
     # Ekstrak nomor klaim sebagai contoh -Ricky
@@ -42,12 +36,10 @@ def extract_data_from_body(body):
     else:
         return None
 
-# Fungsi untuk menyimpan data ke MongoDB -Ricky
-
-
+# Fungsi untuk menyimpan data ke MongoDB -Ricky Isi Koneksi MongoDB anda -Ricky
 def save_to_mongodb(data):
     try:
-        client = pymongo.MongoClient("mongodb://localhost:27017/")
+        client = pymongo.MongoClient("")
         db = client["klaim_asuransi"]
         collection = db["data_klaim"]
         collection.insert_one(data)
@@ -55,8 +47,6 @@ def save_to_mongodb(data):
         logging.error(f"Error saving data to MongoDB: {str(e)}")
 
 # Fungsi untuk mengekstrak data dari attachment -Ricky
-
-
 def process_email(email_body):
     # Define regular expressions to match the parameter values -Ricky
     claim_number_pattern = r"No Klaim: (\w+)"
@@ -88,7 +78,6 @@ def process_email(email_body):
 
     return document
 
-
 def extract_data_from_attachment(part):
     try:
         temp_dir = tempfile.mkdtemp()
@@ -107,11 +96,10 @@ def extract_data_from_attachment(part):
     except Exception as e:
         logging.error(f"Error extracting data from attachment: {str(e)}")
 
-
-# Konfigurasi email
-email_user = ""
+# Konfigurasi email ganti dengan akun email password anda -Ricky
+email_user = "rpa_demo@digitaloptima.id"
 email_pass = ""
-imap_server = ""
+imap_server = "mail.digitaloptima.id"
 imap_port = 993  # Port IMAP SSL
 
 # Buat koneksi ke server email
@@ -171,4 +159,4 @@ finally:
     try:
         mail.logout()
     except Exception as e:
-        logging.error(f"Error while logging out from email server: {str(e)}")
+        logging.error("Error while logging out from email server: " + str(e))
