@@ -22,12 +22,12 @@ df = pd.DataFrame(list(data))
 
 # Encode fitur kategori (transaction_type dan card_type)
 df_encoded = pd.get_dummies(
-    df, columns=['transaction_type', 'card_type'], drop_first=True)
+    df, columns=['dataprocess.transaction_type', 'dataprocess.card_type'], drop_first=True)
 
 # Bagi dataset menjadi fitur (X) dan variabel target (y)
 X = df_encoded.drop('is_fraud', axis=1)
 # Hapus kolom tambahan sesuai kebutuhan
-X = X.drop(['transaction_date', 'merchant_id', 'customer_id', 'location', 'card_number'], axis=1)
+X = X.drop(['dataprocess.transaction_date', 'dataprocess.merchant_id', 'dataprocess.customer_id', 'dataprocess.location', 'dataprocess.card_number'], axis=1)
 
 # Lakukan langkah-langkah preprocessing data sesuai kebutuhan
 
